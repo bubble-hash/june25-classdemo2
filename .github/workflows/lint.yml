@@ -21,7 +21,7 @@ jobs:
 
 
   lint:
-    needs: install_dependencies
+    needs: [install_dependencies, test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
