@@ -29,8 +29,8 @@ jobs:
         
           - name: Set up Python
             uses: actions/setup-python@v5
-              with:
-              python-version: '3.11'
+            with:
+              python-version: '3.12'
 
           - name: Install Linters (pylint, flake8)
             run: |
@@ -44,32 +44,32 @@ jobs:
           - name: Run pylint
             run: pylint --output-format=github .
 
-      test:
-        needs: install_dependencies
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout code
-            uses: actions/checkout@v4
+        test:
+          needs: install_dependencies
+          runs-on: ubuntu-latest
+          steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-          - name: Set up Python
-            uses: actions/setup-python@v5
-            with:
-              python-version: '3.12'
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                python-version: '3.12'
 
-          - name: Install Dependencies and pytest
-            run: |
-              pip install -r requirements.txt
-              pip install pytest
+            - name: Install Dependencies and pytest
+              run: |
+                pip install -r requirements.txt
+                pip install pytest
 
-          - name: Run tests
-            run: pytest
+            - name: Run tests
+              run: pytest
 
-      build:
-        needs: [lint, test]
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout code
-            uses: actions/checkout@v4
+        build:
+          needs: [lint, test]
+          runs-on: ubuntu-latest
+          steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-          - name: Simulate build step
-            run: echo "Simulating the build step - package and zip our app here"
+            - name: Simulate build step
+              run: echo "Simulating the build step - package and zip our app here"
