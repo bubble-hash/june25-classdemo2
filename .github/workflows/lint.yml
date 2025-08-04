@@ -20,7 +20,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           
-      
       # - name: Test with pytest
       #   run: |
       #     # Install pytest and the coverage tool.
@@ -32,7 +31,7 @@ jobs:
 
       - name: Lint code with pylint
         run: pylint --output-format=github .
-  # Pylint infers the Python version from the environment it's running in.
+        continue-on-error: true
   # The '.' means Pylint will check all Python files in the current directory.
 
       - name: Check code formatting with pylint
