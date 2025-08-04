@@ -40,7 +40,6 @@ jobs:
       - name: Run flake8
         run: flake8 . --count --max-complexity=10 --max-line-length=110 --statistics
 
-
       - name: Run pylint
         run: pylint --output-format=github .
         continue-on-error: true
@@ -65,3 +64,12 @@ jobs:
 
       - name: Run tests
         run: pytest
+  build:
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Simulate the build step
+        run: echo "Simulating the build step - package n zip our app here"
