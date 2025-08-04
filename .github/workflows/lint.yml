@@ -36,8 +36,10 @@ jobs:
           pip install pylint
           pip install flake8
 
+
       - name: Run flake8
         run: flake8 . --count --max-complexity=10 --max-line-length=110 --statistics
+
 
       - name: Run pylint
         run: pylint --output-format=github .
